@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-	BufPool * pool = new BufPool(1024, 100);
+	BufPool * pool = new BufPool(1024, 20);
 	pool->Init();
 
 	Subject * subjectA = new Subject();
@@ -24,7 +24,7 @@ int main()
 		BufPtr share_buf = pool->GetBuffer();
 		cout << "productor get 0x" << (int)(share_buf->GetBufferPtr()) << " count " << share_buf.use_count() << endl;
 		subjectA->notifyObservers(share_buf);
-		Sleep(1000);
+		Sleep(500);
 		}
 	});
 	Sleep(1000);
